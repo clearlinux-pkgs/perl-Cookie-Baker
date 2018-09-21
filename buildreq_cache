@@ -1,0 +1,5 @@
+0.10
+perl(ExtUtils::Config)
+perl(ExtUtils::Helpers)
+perl(ExtUtils::InstallPaths)
+perl(Module::Build::Tiny)
