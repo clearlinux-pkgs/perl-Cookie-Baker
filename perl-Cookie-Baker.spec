@@ -4,7 +4,7 @@
 #
 Name     : perl-Cookie-Baker
 Version  : 0.10
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcookie-baker-perl/libcookie-baker-perl_0.09-1.debian.tar.xz
