@@ -4,11 +4,11 @@
 #
 Name     : perl-Cookie-Baker
 Version  : 0.10
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.10.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.10.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcookie-baker-perl/libcookie-baker-perl_0.09-1.debian.tar.xz
-Summary  : 'Cookie string generator / parser'
+Summary  : Cookie string generator / parser
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Cookie-Baker-license = %{version}-%{release}
@@ -28,6 +28,7 @@ use Cookie::Baker;
 Summary: dev components for the perl-Cookie-Baker package.
 Group: Development
 Provides: perl-Cookie-Baker-devel = %{version}-%{release}
+Requires: perl-Cookie-Baker = %{version}-%{release}
 
 %description dev
 dev components for the perl-Cookie-Baker package.
@@ -46,7 +47,7 @@ license components for the perl-Cookie-Baker package.
 cd ..
 %setup -q -T -D -n Cookie-Baker-0.10 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Cookie-Baker-0.10/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Cookie-Baker-0.10/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
