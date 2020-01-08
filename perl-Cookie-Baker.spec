@@ -4,14 +4,15 @@
 #
 Name     : perl-Cookie-Baker
 Version  : 0.11
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcookie-baker-perl/libcookie-baker-perl_0.09-1.debian.tar.xz
-Summary  : Cookie string generator / parser
+Summary  : 'Cookie string generator / parser'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Cookie-Baker-license = %{version}-%{release}
+Requires: perl-Cookie-Baker-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(ExtUtils::Config)
 BuildRequires : perl(ExtUtils::Helpers)
@@ -29,7 +30,6 @@ Summary: dev components for the perl-Cookie-Baker package.
 Group: Development
 Provides: perl-Cookie-Baker-devel = %{version}-%{release}
 Requires: perl-Cookie-Baker = %{version}-%{release}
-Requires: perl-Cookie-Baker = %{version}-%{release}
 
 %description dev
 dev components for the perl-Cookie-Baker package.
@@ -43,18 +43,28 @@ Group: Default
 license components for the perl-Cookie-Baker package.
 
 
+%package perl
+Summary: perl components for the perl-Cookie-Baker package.
+Group: Default
+Requires: perl-Cookie-Baker = %{version}-%{release}
+
+%description perl
+perl components for the perl-Cookie-Baker package.
+
+
 %prep
 %setup -q -n Cookie-Baker-0.11
-cd ..
-%setup -q -T -D -n Cookie-Baker-0.11 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libcookie-baker-perl_0.09-1.debian.tar.xz
+cd %{_builddir}/Cookie-Baker-0.11
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Cookie-Baker-0.11/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Cookie-Baker-0.11/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -66,8 +76,8 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/deblicense_copyright
+cp %{_builddir}/Cookie-Baker-0.11/LICENSE %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/3974dccbc4afd3a0f00ad1f2d510bbf5d862bda7
+cp %{_builddir}/Cookie-Baker-0.11/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/80c8efff028b1bcdbfff7c5e90ea30cbeed692c5
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -80,7 +90,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Cookie/Baker.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -88,5 +97,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Cookie-Baker/LICENSE
-/usr/share/package-licenses/perl-Cookie-Baker/deblicense_copyright
+/usr/share/package-licenses/perl-Cookie-Baker/3974dccbc4afd3a0f00ad1f2d510bbf5d862bda7
+/usr/share/package-licenses/perl-Cookie-Baker/80c8efff028b1bcdbfff7c5e90ea30cbeed692c5
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Cookie/Baker.pm
