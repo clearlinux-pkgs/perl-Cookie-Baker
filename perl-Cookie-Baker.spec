@@ -4,7 +4,7 @@
 #
 Name     : perl-Cookie-Baker
 Version  : 0.11
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.11.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.11.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcookie-baker-perl/libcookie-baker-perl_0.09-1.debian.tar.xz
@@ -77,7 +77,7 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker
 cp %{_builddir}/Cookie-Baker-0.11/LICENSE %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/3974dccbc4afd3a0f00ad1f2d510bbf5d862bda7
-cp %{_builddir}/Cookie-Baker-0.11/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/80c8efff028b1bcdbfff7c5e90ea30cbeed692c5
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Cookie-Baker/80c8efff028b1bcdbfff7c5e90ea30cbeed692c5
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -102,4 +102,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Cookie/Baker.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Cookie/Baker.pm
