@@ -7,7 +7,7 @@
 #
 Name     : perl-Cookie-Baker
 Version  : 0.12
-Release  : 28
+Release  : 29
 URL      : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.12.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/K/KA/KAZEBURO/Cookie-Baker-0.12.tar.gz
 Summary  : 'Cookie string generator / parser'
